@@ -26,7 +26,7 @@ src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_cyw43_
  /home/sagar/picow_ds4/btstack/platform/embedded/btstack_tlv_flash_bank.h \
  /home/sagar/picow_ds4/btstack/platform/embedded/hal_flash_bank.h \
  /home/sagar/picow_ds4/btstack/src/btstack_memory.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/hci.h \
  /home/sagar/picow_ds4/btstack/src/btstack_chipset.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \

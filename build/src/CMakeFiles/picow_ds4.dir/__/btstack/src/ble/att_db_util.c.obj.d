@@ -13,7 +13,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/ble/att_db_util.c.obj: \
  /usr/include/newlib/sys/string.h /usr/include/newlib/stdlib.h \
  /usr/include/newlib/machine/stdlib.h /usr/include/newlib/alloca.h \
  /home/sagar/picow_ds4/btstack/src/ble/att_db_util.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_crypto.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \

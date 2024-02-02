@@ -18,7 +18,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/btstack_link_key_db_tlv.c.ob
  /home/sagar/picow_ds4/btstack/src/classic/btstack_link_key_db.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \
  /home/sagar/picow_ds4/btstack/src/btstack_debug.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \

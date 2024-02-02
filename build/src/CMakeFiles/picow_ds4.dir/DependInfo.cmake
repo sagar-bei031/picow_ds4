@@ -83,8 +83,9 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 
 # The include file search paths:
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
+  "/home/sagar/picow_ds4/inc"
   "/home/sagar/picow_ds4/src"
-  "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_pwm/include"
+  "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_gpio/include"
   "/home/sagar/pico/pico-sdk/src/common/pico_base/include"
   "generated/pico_base"
   "/home/sagar/pico/pico-sdk/src/boards/include"
@@ -92,7 +93,6 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/sagar/pico/pico-sdk/src/rp2040/hardware_regs/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_base/include"
   "/home/sagar/pico/pico-sdk/src/rp2040/hardware_structs/include"
-  "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_gpio/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_claim/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_sync/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_irq/include"
@@ -100,7 +100,6 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/sagar/pico/pico-sdk/src/common/pico_time/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_timer/include"
   "/home/sagar/pico/pico-sdk/src/common/pico_util/include"
-  "/home/sagar/pico/pico-sdk/src/common/pico_stdlib/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_uart/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_resets/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_clocks/include"
@@ -108,6 +107,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_vreg/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_watchdog/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_xosc/include"
+  "/home/sagar/pico/pico-sdk/src/common/pico_stdlib/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/hardware_divider/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/pico_runtime/include"
   "/home/sagar/pico/pico-sdk/src/rp2_common/pico_printf/include"
@@ -253,6 +253,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sagar/picow_ds4/btstack/src/mesh/gatt-service/mesh_provisioning_service_server.c" "src/CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_provisioning_service_server.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_provisioning_service_server.c.obj.d"
   "/home/sagar/picow_ds4/btstack/src/mesh/gatt-service/mesh_proxy_service_server.c" "src/CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_proxy_service_server.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_proxy_service_server.c.obj.d"
   "/home/sagar/picow_ds4/src/bt_hid.c" "src/CMakeFiles/picow_ds4.dir/bt_hid.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/bt_hid.c.obj.d"
+  "/home/sagar/picow_ds4/src/crc.c" "src/CMakeFiles/picow_ds4.dir/crc.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/crc.c.obj.d"
   "/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj.d"
   "/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj.d"
   "/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj.d"

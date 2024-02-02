@@ -195,6 +195,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_proxy_service_server.c.obj.d"
   "CMakeFiles/picow_ds4.dir/bt_hid.c.obj"
   "CMakeFiles/picow_ds4.dir/bt_hid.c.obj.d"
+  "CMakeFiles/picow_ds4.dir/crc.c.obj"
+  "CMakeFiles/picow_ds4.dir/crc.c.obj.d"
   "CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj"
   "CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj.d"
   "CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj"

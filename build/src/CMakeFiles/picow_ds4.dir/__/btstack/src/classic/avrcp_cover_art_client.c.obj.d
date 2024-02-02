@@ -12,7 +12,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/avrcp_cover_art_client.c.obj
  /usr/include/newlib/sys/_locale.h /usr/include/newlib/strings.h \
  /usr/include/newlib/sys/string.h \
  /home/sagar/picow_ds4/btstack/src/btstack_debug.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \

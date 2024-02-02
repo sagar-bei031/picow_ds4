@@ -2,7 +2,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/l2cap.c.obj: \
  /home/sagar/picow_ds4/btstack/src/l2cap.c \
  /home/sagar/picow_ds4/btstack/src/l2cap.h \
  /home/sagar/picow_ds4/btstack/src/hci.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_chipset.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \

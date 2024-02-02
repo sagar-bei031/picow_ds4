@@ -1,6 +1,6 @@
 src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/hsp_hs.c.obj: \
  /home/sagar/picow_ds4/btstack/src/classic/hsp_hs.c \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /usr/include/newlib/stdio.h /usr/include/newlib/_ansi.h \
  /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \

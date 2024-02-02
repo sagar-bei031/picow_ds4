@@ -19,7 +19,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/a2dp.c.obj: \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  /home/sagar/picow_ds4/btstack/src/classic/avdtp.h \
  /home/sagar/picow_ds4/btstack/src/hci.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_chipset.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \

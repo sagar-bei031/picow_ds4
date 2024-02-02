@@ -1,6 +1,6 @@
 src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/obex_message_builder.c.obj: \
  /home/sagar/picow_ds4/btstack/src/classic/obex_message_builder.c \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /usr/include/newlib/stdlib.h /usr/include/newlib/machine/ieeefp.h \
  /usr/include/newlib/_ansi.h /usr/include/newlib/newlib.h \

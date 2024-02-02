@@ -56,7 +56,7 @@ src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_cyw43_
  /usr/include/newlib/string.h /usr/include/newlib/sys/_locale.h \
  /usr/include/newlib/strings.h /usr/include/newlib/sys/string.h \
  /home/sagar/picow_ds4/btstack/src/hci_transport.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \

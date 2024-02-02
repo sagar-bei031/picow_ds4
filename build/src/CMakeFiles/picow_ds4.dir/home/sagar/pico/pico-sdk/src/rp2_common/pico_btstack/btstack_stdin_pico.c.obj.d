@@ -1,6 +1,6 @@
 src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_btstack/btstack_stdin_pico.c.obj: \
  /home/sagar/pico/pico-sdk/src/rp2_common/pico_btstack/btstack_stdin_pico.c \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_stdin.h \
  /home/sagar/picow_ds4/btstack/src/btstack_run_loop.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \

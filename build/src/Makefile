@@ -2496,6 +2496,30 @@ bt_hid.c.s:
 	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/bt_hid.c.s
 .PHONY : bt_hid.c.s
 
+crc.obj: crc.c.obj
+.PHONY : crc.obj
+
+# target to build an object file
+crc.c.obj:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/crc.c.obj
+.PHONY : crc.c.obj
+
+crc.i: crc.c.i
+.PHONY : crc.i
+
+# target to preprocess a source file
+crc.c.i:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/crc.c.i
+.PHONY : crc.c.i
+
+crc.s: crc.c.s
+.PHONY : crc.s
+
+# target to generate assembly for a file
+crc.c.s:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/crc.c.s
+.PHONY : crc.c.s
+
 home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj: home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj
 .PHONY : home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj
 
@@ -4880,6 +4904,9 @@ help:
 	@echo "... bt_hid.obj"
 	@echo "... bt_hid.i"
 	@echo "... bt_hid.s"
+	@echo "... crc.obj"
+	@echo "... crc.i"
+	@echo "... crc.s"
 	@echo "... home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj"
 	@echo "... home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.i"
 	@echo "... home/sagar/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.s"

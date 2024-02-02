@@ -22,7 +22,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/ble/gatt-service/ublox_spp_service_s
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /home/sagar/picow_ds4/btstack/src/ble/gatt_client.h \
  /home/sagar/picow_ds4/btstack/src/hci.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_chipset.h \
  /home/sagar/picow_ds4/btstack/src/btstack_control.h \
  /home/sagar/picow_ds4/btstack/src/hci_cmd.h \

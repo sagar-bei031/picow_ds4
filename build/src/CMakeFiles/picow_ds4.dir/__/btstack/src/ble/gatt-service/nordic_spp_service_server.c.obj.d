@@ -21,7 +21,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/ble/gatt-service/nordic_spp_service_
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \
  /home/sagar/picow_ds4/btstack/src/ble/att_server.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \

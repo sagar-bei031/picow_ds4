@@ -19,7 +19,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/ble/sm.c.obj: \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/ble/core.h \
  /home/sagar/picow_ds4/btstack/src/ble/sm.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \

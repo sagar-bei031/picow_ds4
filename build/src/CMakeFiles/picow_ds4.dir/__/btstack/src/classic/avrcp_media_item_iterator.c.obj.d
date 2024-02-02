@@ -13,7 +13,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/avrcp_media_item_iterator.c.
  /usr/include/newlib/sys/_locale.h /usr/include/newlib/strings.h \
  /usr/include/newlib/sys/string.h \
  /home/sagar/picow_ds4/btstack/src/classic/avrcp_media_item_iterator.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \

@@ -3,7 +3,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/mesh/gatt-service/mesh_provisioning_
  /home/sagar/picow_ds4/btstack/src/mesh/gatt-service/mesh_provisioning_service_server.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /home/sagar/picow_ds4/btstack/src/hci.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_chipset.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \
  /usr/include/newlib/string.h /usr/include/newlib/_ansi.h \

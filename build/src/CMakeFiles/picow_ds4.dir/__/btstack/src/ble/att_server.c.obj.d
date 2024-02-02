@@ -13,7 +13,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/ble/att_server.c.obj: \
  /usr/include/newlib/sys/_locale.h /usr/include/newlib/strings.h \
  /usr/include/newlib/sys/string.h /usr/include/newlib/inttypes.h \
  /usr/include/newlib/sys/_intsup.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/ble/att_dispatch.h \
  /home/sagar/picow_ds4/btstack/src/btstack_util.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \

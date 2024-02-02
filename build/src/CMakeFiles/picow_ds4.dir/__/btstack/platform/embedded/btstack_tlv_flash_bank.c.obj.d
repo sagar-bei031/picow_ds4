@@ -5,7 +5,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/platform/embedded/btstack_tlv_flash_bank
  /home/sagar/picow_ds4/btstack/platform/embedded/btstack_tlv_flash_bank.h \
  /home/sagar/picow_ds4/btstack/platform/embedded/hal_flash_bank.h \
  /home/sagar/picow_ds4/btstack/src/btstack_debug.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \

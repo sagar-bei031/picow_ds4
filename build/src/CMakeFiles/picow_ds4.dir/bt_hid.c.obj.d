@@ -68,11 +68,10 @@ src/CMakeFiles/picow_ds4.dir/bt_hid.c.obj: \
  /home/sagar/pico/pico-sdk/src/rp2_common/pico_async_context/include/pico/async_context.h \
  /home/sagar/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/include/pico/cyw43_arch/arch_threadsafe_background.h \
  /home/sagar/picow_ds4/btstack/src/btstack_run_loop.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack.h \
  /home/sagar/picow_ds4/btstack/src/ad_parser.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \
@@ -203,4 +202,4 @@ src/CMakeFiles/picow_ds4.dir/bt_hid.c.obj: \
  /home/sagar/picow_ds4/btstack/src/le-audio/gatt-service/broadcast_audio_scan_service_server.h \
  /home/sagar/picow_ds4/btstack/src/le-audio/gatt-service/broadcast_audio_scan_service_util.h \
  /home/sagar/picow_ds4/btstack/src/classic/sdp_server.h \
- /home/sagar/picow_ds4/src/bt_hid.h
+ /home/sagar/picow_ds4/inc/bt_hid.h

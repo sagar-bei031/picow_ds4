@@ -15,7 +15,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/device_id_server.c.obj: \
  /usr/include/newlib/sys/string.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth_sdp.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/classic/core.h \
  /home/sagar/picow_ds4/btstack/src/classic/sdp_util.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \

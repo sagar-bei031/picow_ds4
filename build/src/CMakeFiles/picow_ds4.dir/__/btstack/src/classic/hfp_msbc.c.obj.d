@@ -1,6 +1,6 @@
 src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/hfp_msbc.c.obj: \
  /home/sagar/picow_ds4/btstack/src/classic/hfp_msbc.c \
- /home/sagar/picow_ds4/src/btstack_config.h /usr/include/newlib/string.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h /usr/include/newlib/string.h \
  /usr/include/newlib/_ansi.h /usr/include/newlib/newlib.h \
  /usr/include/newlib/_newlib_version.h /usr/include/newlib/sys/config.h \
  /usr/include/newlib/machine/ieeefp.h /usr/include/newlib/sys/features.h \

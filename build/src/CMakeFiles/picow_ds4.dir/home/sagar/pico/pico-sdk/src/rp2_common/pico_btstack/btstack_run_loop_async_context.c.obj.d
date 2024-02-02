@@ -2,7 +2,7 @@ src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_btstac
  /home/sagar/pico/pico-sdk/src/rp2_common/pico_btstack/btstack_run_loop_async_context.c \
  /home/sagar/pico/pico-sdk/src/rp2_common/pico_btstack/include/pico/btstack_run_loop_async_context.h \
  /home/sagar/picow_ds4/btstack/src/btstack_run_loop.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \

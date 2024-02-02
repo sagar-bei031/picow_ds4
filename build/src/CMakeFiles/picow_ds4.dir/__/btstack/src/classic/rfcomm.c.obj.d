@@ -14,7 +14,7 @@ src/CMakeFiles/picow_ds4.dir/__/btstack/src/classic/rfcomm.c.obj: \
  /usr/include/newlib/strings.h /usr/include/newlib/sys/string.h \
  /home/sagar/picow_ds4/btstack/src/bluetooth_sdp.h \
  /home/sagar/picow_ds4/btstack/src/btstack_debug.h \
- /home/sagar/picow_ds4/src/btstack_config.h \
+ /home/sagar/picow_ds4/inc/btstack_config.h \
  /home/sagar/picow_ds4/btstack/src/btstack_defines.h \
  /home/sagar/picow_ds4/btstack/src/btstack_linked_list.h \
  /home/sagar/picow_ds4/btstack/src/btstack_bool.h \
