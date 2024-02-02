@@ -2,6 +2,7 @@ add_executable(picow_ds4
 	main.c
 	bt_hid.c
 	crc8.c
+	shared.c
 )
 
 pico_enable_stdio_usb(picow_ds4 1)

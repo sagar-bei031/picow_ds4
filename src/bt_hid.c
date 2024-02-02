@@ -53,11 +53,12 @@
 #include "classic/sdp_server.h"
 
 #include "bt_hid.h"
+#include "shared.h"
 
 #define MAX_ATTRIBUTE_VALUE_SIZE 512
 
 // c8 ps4:: 28:C1:3C:7D:CC:B6
-static const char * remote_addr_string = "28:C1:3C:7D:CC:B6";
+static const char *remote_addr_string = "28:C1:3C:7D:CC:B6";
 
 static bd_addr_t remote_addr;
 static bd_addr_t connected_addr;
@@ -67,12 +68,13 @@ static btstack_packet_callback_registration_t hci_event_callback_registration;
 static uint8_t hid_descriptor_storage[MAX_ATTRIBUTE_VALUE_SIZE];
 
 static uint16_t hid_host_cid = 0;
-static bool     hid_host_descriptor_available = false;
+static bool hid_host_descriptor_available = false;
 static hid_protocol_mode_t hid_host_report_mode = HID_PROTOCOL_MODE_REPORT;
 
-static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size);
+static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size);
 
-static void hid_host_setup(void){
+static void hid_host_setup(void)
+{
 	// Initialize L2CAP
 	l2cap_init();
 
@@ -106,7 +108,8 @@ const struct bt_hid_state default_state = {
 
 struct bt_hid_state latest;
 
-struct __attribute__((packed)) input_report_17 {
+struct __attribute__((packed)) input_report_17
+{
 	uint8_t report_id;
 	uint8_t pad[2];
 
@@ -124,19 +127,22 @@ struct __attribute__((packed)) input_report_17 {
 	uint8_t pad3;
 };
 
-static void hid_host_handle_interrupt_report(const uint8_t *packet, uint16_t packet_len){
-	static struct bt_hid_state last_state = { 0 };
+static void hid_host_handle_interrupt_report(const uint8_t *packet, uint16_t packet_len)
+{
+	static struct bt_hid_state last_state = {0};
 
 	// Only interested in report_id 0x11
-	if (packet_len < sizeof(struct input_report_17) + 1) {
+	if (packet_len < sizeof(struct input_report_17) + 1)
+	{
 		return;
 	}
 
-	if ((packet[0] != 0xa1) || (packet[1] != 0x11)) {
+	if ((packet[0] != 0xa1) || (packet[1] != 0x11))
+	{
 		return;
 	}
 
-	//printf_hexdump(packet, packet_len);
+	// printf_hexdump(packet, packet_len);
 
 	struct input_report_17 *report = (struct input_report_17 *)&packet[1];
 
@@ -158,7 +164,6 @@ static void hid_host_handle_interrupt_report(const uint8_t *packet, uint16_t pac
 
 	// TODO: Parse out battery, touchpad, sixaxis, timestamp, temperature(?!)
 	// Sensors will also need calibration
-
 }
 
 void bt_hid_get_latest(struct bt_hid_state *dst)
@@ -177,29 +182,34 @@ static void bt_hid_disconnected(bd_addr_t addr)
 	memcpy(&latest, &default_state, sizeof(latest));
 }
 
-static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size)
+static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size)
 {
 	UNUSED(channel);
 	UNUSED(size);
 
-	uint8_t   event;
-	uint8_t   hid_event;
+	uint8_t event;
+	uint8_t hid_event;
 	bd_addr_t event_addr;
-	uint8_t   status;
+	uint8_t status;
 	uint8_t reason;
 
-	if (packet_type != HCI_EVENT_PACKET) {
+	if (packet_type != HCI_EVENT_PACKET)
+	{
 		return;
 	}
 
 	event = hci_event_packet_get_type(packet);
-	switch (event) {
+	Message msg;
+	switch (event)
+	{
 	case BTSTACK_EVENT_STATE:
 		// On boot, we try a manual connection
-		if (btstack_event_state_get_state(packet) == HCI_STATE_WORKING){
+		if (btstack_event_state_get_state(packet) == HCI_STATE_WORKING)
+		{
 			printf("Starting hid_host_connect (%s)\n", bd_addr_to_str(remote_addr));
 			status = hid_host_connect(remote_addr, hid_host_report_mode, &hid_host_cid);
-			if (status != ERROR_CODE_SUCCESS){
+			if (status != ERROR_CODE_SUCCESS)
+			{
 				printf("hid_host_connect command failed: 0x%02x\n", status);
 			}
 		}
@@ -207,11 +217,16 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 	case HCI_EVENT_CONNECTION_COMPLETE:
 		status = hci_event_connection_complete_get_status(packet);
 		printf("Connection complete: %x\n", status);
+
+		msg.is_ps4_connected = true;
+		queue_add_blocking(&shared_queue, &msg);
 		break;
 	case HCI_EVENT_DISCONNECTION_COMPLETE:
 		status = hci_event_disconnection_complete_get_status(packet);
 		reason = hci_event_disconnection_complete_get_reason(packet);
 		printf("Disconnection complete: status: %x, reason: %x\n", status, reason);
+		msg.is_ps4_connected = false;
+		queue_add_blocking(&shared_queue, &msg);
 		break;
 	case HCI_EVENT_MAX_SLOTS_CHANGED:
 		status = hci_event_max_slots_changed_get_lmp_max_slots(packet);
@@ -227,7 +242,8 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 		break;
 	case HCI_EVENT_HID_META:
 		hid_event = hci_event_hid_meta_get_subevent_code(packet);
-		switch (hid_event) {
+		switch (hid_event)
+		{
 		case HID_SUBEVENT_INCOMING_CONNECTION:
 			hid_subevent_incoming_connection_get_address(packet, event_addr);
 			printf("Accepting connection from %s\n", bd_addr_to_str(event_addr));
@@ -236,7 +252,8 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 		case HID_SUBEVENT_CONNECTION_OPENED:
 			status = hid_subevent_connection_opened_get_status(packet);
 			hid_subevent_connection_opened_get_bd_addr(packet, event_addr);
-			if (status != ERROR_CODE_SUCCESS) {
+			if (status != ERROR_CODE_SUCCESS)
+			{
 				printf("Connection to %s failed: 0x%02x\n", bd_addr_to_str(event_addr), status);
 				bt_hid_disconnected(event_addr);
 				return;
@@ -248,7 +265,8 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 			break;
 		case HID_SUBEVENT_DESCRIPTOR_AVAILABLE:
 			status = hid_subevent_descriptor_available_get_status(packet);
-			if (status == ERROR_CODE_SUCCESS){
+			if (status == ERROR_CODE_SUCCESS)
+			{
 				hid_host_descriptor_available = true;
 
 				uint16_t dlen = hid_descriptor_storage_get_descriptor_len(hid_host_cid);
@@ -256,26 +274,33 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 
 				// Send FEATURE 0x05, to switch the controller to "full" report mode
 				hid_host_send_get_report(hid_host_cid, HID_REPORT_TYPE_FEATURE, 0x05);
-			} else {
+			}
+			else
+			{
 				printf("Couldn't process HID Descriptor, status: %d\n", status);
 			}
 			break;
 		case HID_SUBEVENT_REPORT:
-			if (hid_host_descriptor_available){
+			if (hid_host_descriptor_available)
+			{
 				hid_host_handle_interrupt_report(hid_subevent_report_get_report(packet), hid_subevent_report_get_report_len(packet));
-			} else {
+			}
+			else
+			{
 				printf("No hid host descriptor available\n");
 				printf_hexdump(hid_subevent_report_get_report(packet), hid_subevent_report_get_report_len(packet));
 			}
 			break;
 		case HID_SUBEVENT_SET_PROTOCOL_RESPONSE:
 			status = hid_subevent_set_protocol_response_get_handshake_status(packet);
-			if (status != HID_HANDSHAKE_PARAM_TYPE_SUCCESSFUL){
+			if (status != HID_HANDSHAKE_PARAM_TYPE_SUCCESSFUL)
+			{
 				printf("Protocol handshake error: 0x%02x\n", status);
 				break;
 			}
 			hid_protocol_mode_t proto = hid_subevent_set_protocol_response_get_protocol_mode(packet);
-			switch (proto) {
+			switch (proto)
+			{
 			case HID_PROTOCOL_MODE_BOOT:
 				printf("Negotiated protocol: BOOT\n");
 				break;
@@ -292,32 +317,35 @@ static void packet_handler (uint8_t packet_type, uint16_t channel, uint8_t *pack
 			bt_hid_disconnected(connected_addr);
 			break;
 		case HID_SUBEVENT_GET_REPORT_RESPONSE:
-			{
-				status = hid_subevent_get_report_response_get_handshake_status(packet);
-				uint16_t dlen =  hid_subevent_get_report_response_get_report_len(packet);
-				printf("GET_REPORT response. status: %d, len: %d\n", status, dlen);
-			}
-			break;
+		{
+			status = hid_subevent_get_report_response_get_handshake_status(packet);
+			uint16_t dlen = hid_subevent_get_report_response_get_report_len(packet);
+			printf("GET_REPORT response. status: %d, len: %d\n", status, dlen);
+		}
+		break;
 		default:
 			printf("Unknown HID subevent: 0x%x\n", hid_event);
 			break;
 		}
 		break;
 	default:
-		//printf("Unknown HCI event: 0x%x\n", event);
+		// printf("Unknown HCI event: 0x%x\n", event);
 		break;
 	}
 }
 
-#define BLINK_MS 250
+#define BLINK_MS 100
 static btstack_timer_source_t blink_timer;
 static void blink_handler(btstack_timer_source_t *ts)
 {
 	static bool on = 0;
 
-	if (hid_host_cid != 0) {
+	if (hid_host_cid != 0)
+	{
 		on = true;
-	} else {
+	}
+	else
+	{
 		on = !on;
 	}
 
@@ -327,8 +355,10 @@ static void blink_handler(btstack_timer_source_t *ts)
 	btstack_run_loop_add_timer(&blink_timer);
 }
 
-void bt_main(void) {
-	if (cyw43_arch_init()) {
+void bt_main(void)
+{
+	if (cyw43_arch_init())
+	{
 		printf("Wi-Fi init failed\n");
 		return;
 	}

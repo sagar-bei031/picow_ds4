@@ -374,6 +374,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d"
   "CMakeFiles/picow_ds4.dir/main.c.obj"
   "CMakeFiles/picow_ds4.dir/main.c.obj.d"
+  "CMakeFiles/picow_ds4.dir/shared.c.obj"
+  "CMakeFiles/picow_ds4.dir/shared.c.obj.d"
   "picow_ds4.elf"
   "picow_ds4.pdb"
 )

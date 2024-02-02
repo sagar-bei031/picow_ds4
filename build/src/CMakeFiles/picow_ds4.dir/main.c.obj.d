@@ -53,6 +53,8 @@ src/CMakeFiles/picow_ds4.dir/main.c.obj: /home/sagar/picow_ds4/src/main.c \
  /home/sagar/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
  /home/sagar/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
  /home/sagar/picow_ds4/inc/bt_hid.h /home/sagar/picow_ds4/inc/crc8.h \
+ /home/sagar/picow_ds4/inc/shared.h \
+ /home/sagar/pico/pico-sdk/src/common/pico_util/include/pico/util/queue.h \
  /usr/include/newlib/memory.h /usr/include/newlib/string.h \
  /usr/include/newlib/sys/reent.h /usr/include/newlib/_ansi.h \
  /usr/include/newlib/sys/_types.h /usr/include/newlib/machine/_types.h \

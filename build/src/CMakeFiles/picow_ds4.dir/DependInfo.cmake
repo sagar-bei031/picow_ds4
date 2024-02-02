@@ -336,6 +336,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sagar/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
   "/home/sagar/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d"
   "/home/sagar/picow_ds4/src/main.c" "src/CMakeFiles/picow_ds4.dir/main.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/main.c.obj.d"
+  "/home/sagar/picow_ds4/src/shared.c" "src/CMakeFiles/picow_ds4.dir/shared.c.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/shared.c.obj.d"
   "/home/sagar/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj" "gcc" "src/CMakeFiles/picow_ds4.dir/home/sagar/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj.d"
   )
 

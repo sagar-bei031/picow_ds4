@@ -202,4 +202,7 @@ src/CMakeFiles/picow_ds4.dir/bt_hid.c.obj: \
  /home/sagar/picow_ds4/btstack/src/le-audio/gatt-service/broadcast_audio_scan_service_server.h \
  /home/sagar/picow_ds4/btstack/src/le-audio/gatt-service/broadcast_audio_scan_service_util.h \
  /home/sagar/picow_ds4/btstack/src/classic/sdp_server.h \
- /home/sagar/picow_ds4/inc/bt_hid.h
+ /home/sagar/picow_ds4/inc/bt_hid.h /home/sagar/picow_ds4/inc/shared.h \
+ /home/sagar/pico/pico-sdk/src/common/pico_util/include/pico/util/queue.h \
+ /home/sagar/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+ /home/sagar/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h

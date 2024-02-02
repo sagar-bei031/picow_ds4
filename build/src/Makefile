@@ -4600,6 +4600,30 @@ main.c.s:
 	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/main.c.s
 .PHONY : main.c.s
 
+shared.obj: shared.c.obj
+.PHONY : shared.obj
+
+# target to build an object file
+shared.c.obj:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/shared.c.obj
+.PHONY : shared.c.obj
+
+shared.i: shared.c.i
+.PHONY : shared.i
+
+# target to preprocess a source file
+shared.c.i:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/shared.c.i
+.PHONY : shared.c.i
+
+shared.s: shared.c.s
+.PHONY : shared.s
+
+# target to generate assembly for a file
+shared.c.s:
+	cd /home/sagar/picow_ds4/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/picow_ds4.dir/build.make src/CMakeFiles/picow_ds4.dir/shared.c.s
+.PHONY : shared.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -5167,6 +5191,9 @@ help:
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... shared.obj"
+	@echo "... shared.i"
+	@echo "... shared.s"
 .PHONY : help
 
 

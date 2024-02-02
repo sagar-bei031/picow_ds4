@@ -13,6 +13,7 @@
 
 #include "bt_hid.h"
 #include "crc8.h"
+#include "shared.h"
 
 #include <memory.h>
 #include <stdio.h>
@@ -41,6 +42,8 @@ void main()
 
 	printf("Picow Init Done\n");
 
+	shared_init();
+
 	// Launch Bluetooth HID main function on core 1
 	multicore_launch_core1(bt_main);
 
@@ -51,59 +54,68 @@ void main()
 	init_CRC_Table(7, crc_table, sizeof(crc_table));
 
 	last_sent_tick = get_tick();
+	bool is_ps4_connected = false;
 
 	while (1)
 	{
-		// Control the sending rate
-		uint32_t current_tick = get_tick();
-		if (current_tick - last_sent_tick < 50)
-			continue;
+		Message msg;
+		queue_try_remove(&shared_queue, &msg);
+		is_ps4_connected = msg.is_ps4_connected;
 
-		// Get the latest Bluetooth HID state
-		bt_hid_get_latest(&state);
+		if (is_ps4_connected)
+		{
+			// Get the latest Bluetooth HID state
+			bt_hid_get_latest(&state);
 
-		// Map Bluetooth HID state to JoystickData structure
-		jdata.button1 = 0;
-		jdata.button1 |= (state.buttons & B_SQUARE) ? 1 << 7 : 0;
-		jdata.button1 |= (state.buttons & B_TRIANGLE) ? 1 << 6 : 0;
-		jdata.button1 |= (state.buttons & B_CROSS) ? 1 << 5 : 0;
-		jdata.button1 |= (state.buttons & B_CIRCLE) ? 1 << 4 : 0;
-		jdata.button1 |= H_UP(state.hat) ? 1 << 3 : 0;
-		jdata.button1 |= H_DOWN(state.hat) ? 1 << 2 : 0;
-		jdata.button1 |= (state.buttons & B_L1) ? 1 << 1 : 0;
-		jdata.button1 |= (state.buttons & B_R1) ? 1 : 0;
+			// Map Bluetooth HID state to JoystickData structure
+			jdata.button1 = 0;
+			jdata.button1 |= (state.buttons & B_SQUARE) ? 1 << 7 : 0;
+			jdata.button1 |= (state.buttons & B_TRIANGLE) ? 1 << 6 : 0;
+			jdata.button1 |= (state.buttons & B_CROSS) ? 1 << 5 : 0;
+			jdata.button1 |= (state.buttons & B_CIRCLE) ? 1 << 4 : 0;
+			jdata.button1 |= H_UP(state.hat) ? 1 << 3 : 0;
+			jdata.button1 |= H_DOWN(state.hat) ? 1 << 2 : 0;
+			jdata.button1 |= (state.buttons & B_L1) ? 1 << 1 : 0;
+			jdata.button1 |= (state.buttons & B_R1) ? 1 : 0;
 
-		jdata.button2 = 0;
-		jdata.button2 |= (state.buttons & B_SHARE) ? 1 << 7 : 0;
-		jdata.button2 |= (state.buttons & B_OPTIONS) ? 1 << 6 : 0;
-		jdata.button2 |= (state.buttons & B_PS4) ? 1 << 5 : 0;
-		jdata.button2 |= H_LEFT(state.hat) ? 1 << 4 : 0;
-		jdata.button2 |= H_RIGHT(state.hat) ? 1 << 3 : 0;
-		jdata.button2 |= (state.buttons & B_LEFT_STICK) ? 1 << 2 : 0;
-		jdata.button2 |= (state.buttons & B_RIGHT_STICK) ? 1 << 1 : 0;
-		jdata.button2 |= (state.buttons & B_TOUCH) ? 1 : 0;
+			jdata.button2 = 0;
+			jdata.button2 |= (state.buttons & B_SHARE) ? 1 << 7 : 0;
+			jdata.button2 |= (state.buttons & B_OPTIONS) ? 1 << 6 : 0;
+			jdata.button2 |= (state.buttons & B_PS4) ? 1 << 5 : 0;
+			jdata.button2 |= H_LEFT(state.hat) ? 1 << 4 : 0;
+			jdata.button2 |= H_RIGHT(state.hat) ? 1 << 3 : 0;
+			jdata.button2 |= (state.buttons & B_LEFT_STICK) ? 1 << 2 : 0;
+			jdata.button2 |= (state.buttons & B_RIGHT_STICK) ? 1 << 1 : 0;
+			jdata.button2 |= (state.buttons & B_TOUCH) ? 1 : 0;
 
-		jdata.l2 = state.l2;
-		jdata.r2 = state.r2;
+			jdata.l2 = state.l2;
+			jdata.r2 = state.r2;
 
-		jdata.lx = state.lx < 128 ? map(state.lx, 0, 127, -128, -1) : map(state.lx, 128, 255, 0, 127);
-		jdata.ly = state.ly < 128 ? map(state.ly, 0, 127, 127, 0) : map(state.ly, 128, 255, -1, -128);
+			jdata.lx = state.lx < 128 ? map(state.lx, 0, 127, -128, -1) : map(state.lx, 128, 255, 0, 127);
+			jdata.ly = state.ly < 128 ? map(state.ly, 0, 127, 127, 0) : map(state.ly, 128, 255, -1, -128);
 
-		jdata.rx = state.rx < 128 ? map(state.rx, 0, 127, -128, -1) : map(state.rx, 128, 255, 0, 127);
-		jdata.ry = state.ry < 128 ? map(state.ry, 0, 127, 127, 0) : map(state.ry, 128, 255, -1, -128);
+			jdata.rx = state.rx < 128 ? map(state.rx, 0, 127, -128, -1) : map(state.rx, 128, 255, 0, 127);
+			jdata.ry = state.ry < 128 ? map(state.ry, 0, 127, 127, 0) : map(state.ry, 128, 255, -1, -128);
 
-		// Prepare data for transmission
-		sending_bytes[0] = START_BYTE;
-		memcpy(sending_bytes + 1, (uint8_t *)&jdata, 8);
-		sending_bytes[9] = get_CRC_Hash(sending_bytes + 1, 8, crc_table);
+			// Prepare data for transmission
+			sending_bytes[0] = START_BYTE;
+			memcpy(sending_bytes + 1, (uint8_t *)&jdata, 8);
+			sending_bytes[9] = get_CRC_Hash(sending_bytes + 1, 8, crc_table);
 
-		// Send data via UART
-		uart_write_blocking(uart0, sending_bytes, 10);
+			// Send data via UART
+			uart_write_blocking(uart0, sending_bytes, 10);
 
-		// Print joystick data for debugging
-		print_joystick_data();
+			// Print joystick data for debugging
+			print_joystick_data();
 
-		last_sent_tick = current_tick;
+			last_sent_tick = get_tick();
+		}
+		else
+		{
+			printf("PS4 not connected\n");
+		}
+
+		sleep_ms(50);
 	}
 }
 
