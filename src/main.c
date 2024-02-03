@@ -50,7 +50,7 @@ void main()
 
 	// Initialize CRC8 lookup table
 	init_CRC_Table(7, crc_table, sizeof(crc_table));
-	
+
 	last_sent_tick = get_tick();
 
 	while (1)
@@ -60,8 +60,10 @@ void main()
 			continue;
 
 		Message msg;
-		queue_try_remove(&shared_queue, &msg);
-		is_ps4_connected = msg.is_ps4_connected;
+		if (queue_try_remove(&shared_queue, &msg))
+		{
+			is_ps4_connected = msg.is_ps4_connected;
+		}
 
 		if (is_ps4_connected)
 		{
