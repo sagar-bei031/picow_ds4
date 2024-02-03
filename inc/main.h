@@ -21,20 +21,20 @@
  * @def B_L1, B_R1, B_L2, B_R2, B_SHARE, B_OPTIONS, B_LEFT_STICK, B_RIGHT_STICK, B_PS4, B_TOUCH, B_SQUARE, B_CROSS, B_CIRCLE, B_TRIANGLE
  * @brief Bit masks for various buttons in the joystick data packet.
  */
-#define B_L1 0x0001U
-#define B_R1 0x0002U
-#define B_L2 0x0004U
-#define B_R2 0x0008U
-#define B_SHARE 0x0010U
-#define B_OPTIONS 0x0020U
-#define B_LEFT_STICK 0x0040U
-#define B_RIGHT_STICK 0x0080U
-#define B_PS4 0x0100U
-#define B_TOUCH 0x0200U
-#define B_SQUARE 0x1000U
-#define B_CROSS 0x2000U
-#define B_CIRCLE 0X4000U
-#define B_TRIANGLE 0X8000U
+#define B_L1            0x0001U
+#define B_R1            0x0002U
+#define B_L2            0x0004U
+#define B_R2            0x0008U
+#define B_SHARE         0x0010U
+#define B_OPTIONS       0x0020U
+#define B_LEFT_STICK    0x0040U
+#define B_RIGHT_STICK   0x0080U
+#define B_PS4           0x0100U
+#define B_TOUCH         0x0200U
+#define B_SQUARE        0x1000U
+#define B_CROSS         0x2000U
+#define B_CIRCLE        0X4000U
+#define B_TRIANGLE      0X8000U
 
 /**
  * @def H_UP, H_RIGHT, H_DOWN, H_LEFT

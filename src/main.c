@@ -24,6 +24,7 @@ JoystickData jdata = {0, 0, 0, 0, 0, 0, 0, 0};
 uint8_t sending_bytes[10];
 uint8_t crc_table[CRC8_TABLE_SIZE];
 uint32_t last_sent_tick;
+bool is_ps4_connected = false;
 
 /**
  * @brief Main function of the application.
@@ -38,26 +39,26 @@ void main()
 	gpio_set_function(1, GPIO_FUNC_UART);
 
 	stdio_init_all();
-	sleep_ms(1000);
-
-	printf("Picow Init Done\n");
-
 	shared_init();
 
 	// Launch Bluetooth HID main function on core 1
 	multicore_launch_core1(bt_main);
 
 	// Wait for initialization (a handshake with the fifo could be done here)
+	printf("Picow Init Done\n");
 	sleep_ms(1000);
 
 	// Initialize CRC8 lookup table
 	init_CRC_Table(7, crc_table, sizeof(crc_table));
-
+	
 	last_sent_tick = get_tick();
-	bool is_ps4_connected = false;
 
 	while (1)
 	{
+		uint32_t current_tick = get_tick();
+		if (current_tick - last_sent_tick < 50)
+			continue;
+
 		Message msg;
 		queue_try_remove(&shared_queue, &msg);
 		is_ps4_connected = msg.is_ps4_connected;
@@ -107,15 +108,13 @@ void main()
 
 			// Print joystick data for debugging
 			print_joystick_data();
-
 			last_sent_tick = get_tick();
 		}
 		else
 		{
 			printf("PS4 not connected\n");
+			sleep_ms(50);
 		}
-
-		sleep_ms(50);
 	}
 }
 
