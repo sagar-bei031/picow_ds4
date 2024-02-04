@@ -10,7 +10,6 @@
 
 #include <stdint.h>
 
-
 /**
  * @def START_BYTE
  * @brief Start byte used in the joystick data packet.
@@ -21,20 +20,20 @@
  * @def B_L1, B_R1, B_L2, B_R2, B_SHARE, B_OPTIONS, B_LEFT_STICK, B_RIGHT_STICK, B_PS4, B_TOUCH, B_SQUARE, B_CROSS, B_CIRCLE, B_TRIANGLE
  * @brief Bit masks for various buttons in the joystick data packet.
  */
-#define B_L1            0x0001U
-#define B_R1            0x0002U
-#define B_L2            0x0004U
-#define B_R2            0x0008U
-#define B_SHARE         0x0010U
-#define B_OPTIONS       0x0020U
-#define B_LEFT_STICK    0x0040U
-#define B_RIGHT_STICK   0x0080U
-#define B_PS4           0x0100U
-#define B_TOUCH         0x0200U
-#define B_SQUARE        0x1000U
-#define B_CROSS         0x2000U
-#define B_CIRCLE        0X4000U
-#define B_TRIANGLE      0X8000U
+#define B_L1 0x0001U
+#define B_R1 0x0002U
+#define B_L2 0x0004U
+#define B_R2 0x0008U
+#define B_SHARE 0x0010U
+#define B_OPTIONS 0x0020U
+#define B_LEFT_STICK 0x0040U
+#define B_RIGHT_STICK 0x0080U
+#define B_PS4 0x0100U
+#define B_TOUCH 0x0200U
+#define B_SQUARE 0x1000U
+#define B_CROSS 0x2000U
+#define B_CIRCLE 0X4000U
+#define B_TRIANGLE 0X8000U
 
 /**
  * @def H_UP, H_RIGHT, H_DOWN, H_LEFT
@@ -45,34 +44,36 @@
 #define H_DOWN(__HAT__) ((__HAT__ == 3) || (__HAT__ == 4) || (__HAT__ == 5))
 #define H_LEFT(__HAT__) ((__HAT__ == 5) || (__HAT__ == 6) || (__HAT__ == 7))
 
-/**
- * @struct JoystickData
- * @brief Structure representing joystick data packet.
- *
- * There are ten bytes in a packet of control data.
- * First byte is start byte.
- * Last byte is crc8 hash.
- * Between eight bytes include the following:
- * - Button byte-1: Square Triangle Cross Circle Up Down L1 R1
- * - Button byte-2: Share Options PS4 Left right Left-stick-press Right-stick-press Touch_Pad_Click
- * - L2
- * - R2
- * - Left-stick-horizontal(x)
- * - Left-stick-vertical(y)
- * - Right-stick-horizontal(x)
- * - Right-stick-vertical(y)
- */
 typedef struct
 {
-    uint8_t button1; /**< Button byte-1 */
-    uint8_t button2; /**< Button byte-2 */
-    uint8_t l2; /**< L2 */
-    uint8_t r2; /**< R2 */
-    int8_t lx; /**< Left-stick-horizontal(x) */
-    int8_t ly; /**< Left-stick-vertical(y) */
-    int8_t rx; /**< Right-stick-horizontal(x) */
-    int8_t ry; /**< Right-stick-vertical(y) */
-} JoystickData;
+    int8_t lx;
+    int8_t ly;
+    int8_t rx;
+    int8_t ry;
+    uint8_t lt;
+    uint8_t rt;
+    uint16_t buttons;
+} JoyData;
+
+enum JoyButtons
+{
+    Cross,
+    Circle,
+    Square,
+    Triangle,
+    Share,
+    Power,
+    Option,
+    L3,
+    R3,
+    L1,
+    R1,
+    Up,
+    Down,
+    Left,
+    Right,
+    Touch
+};
 
 /**
  * @struct bt_hid_state

@@ -20,7 +20,7 @@
 
 // Global variables
 bt_hid_state state;
-JoystickData jdata = {0, 0, 0, 0, 0, 0, 0, 0};
+JoyData jdata = {0, 0, 0, 0, 0, 0, 0, 0};
 uint8_t sending_bytes[10];
 uint8_t crc_table[CRC8_TABLE_SIZE];
 uint32_t last_sent_tick;
@@ -71,28 +71,26 @@ void main()
 			bt_hid_get_latest(&state);
 
 			// Map Bluetooth HID state to JoystickData structure
-			jdata.button1 = 0;
-			jdata.button1 |= (state.buttons & B_SQUARE) ? 1 << 7 : 0;
-			jdata.button1 |= (state.buttons & B_TRIANGLE) ? 1 << 6 : 0;
-			jdata.button1 |= (state.buttons & B_CROSS) ? 1 << 5 : 0;
-			jdata.button1 |= (state.buttons & B_CIRCLE) ? 1 << 4 : 0;
-			jdata.button1 |= H_UP(state.hat) ? 1 << 3 : 0;
-			jdata.button1 |= H_DOWN(state.hat) ? 1 << 2 : 0;
-			jdata.button1 |= (state.buttons & B_L1) ? 1 << 1 : 0;
-			jdata.button1 |= (state.buttons & B_R1) ? 1 : 0;
+			jdata.buttons = 0;
+			jdata.buttons |= (state.buttons & B_CROSS) ? 1 : Cross;
+			jdata.buttons |= (state.buttons & B_CIRCLE) ? 1 << Circle : 0;
+			jdata.buttons |= (state.buttons & B_SQUARE) ? 1 << Square : 0;
+			jdata.buttons |= (state.buttons & B_TRIANGLE) ? 1 << Triangle : 0;
+			jdata.buttons |= (state.buttons & B_SHARE) ? 1 << Share : 0;
+			jdata.buttons |= (state.buttons & B_PS4) ? 1 << Power : 0;
+			jdata.buttons |= (state.buttons & B_OPTIONS) ? 1 << Option : 0;
+			jdata.buttons |= (state.buttons & B_LEFT_STICK) ? 1 << L3 : 0;
+			jdata.buttons |= (state.buttons & B_RIGHT_STICK) ? 1 << R3 : 0;
+			jdata.buttons |= (state.buttons & B_L1) ? 1 << L1 : 0;
+			jdata.buttons |= (state.buttons & B_R1) ? R1 : 0;
+			jdata.buttons |= H_UP(state.hat) ? 1 << Up : 0;
+			jdata.buttons |= H_DOWN(state.hat) ? 1 << Down : 0;
+			jdata.buttons |= H_LEFT(state.hat) ? 1 << Left : 0;
+			jdata.buttons |= H_RIGHT(state.hat) ? 1 << Right : 0;
+			jdata.buttons |= (state.buttons & B_TOUCH) ? 1 << Touch : 0;
 
-			jdata.button2 = 0;
-			jdata.button2 |= (state.buttons & B_SHARE) ? 1 << 7 : 0;
-			jdata.button2 |= (state.buttons & B_OPTIONS) ? 1 << 6 : 0;
-			jdata.button2 |= (state.buttons & B_PS4) ? 1 << 5 : 0;
-			jdata.button2 |= H_LEFT(state.hat) ? 1 << 4 : 0;
-			jdata.button2 |= H_RIGHT(state.hat) ? 1 << 3 : 0;
-			jdata.button2 |= (state.buttons & B_LEFT_STICK) ? 1 << 2 : 0;
-			jdata.button2 |= (state.buttons & B_RIGHT_STICK) ? 1 << 1 : 0;
-			jdata.button2 |= (state.buttons & B_TOUCH) ? 1 : 0;
-
-			jdata.l2 = state.l2;
-			jdata.r2 = state.r2;
+			jdata.lt = state.l2;
+			jdata.rt = state.r2;
 
 			jdata.lx = state.lx < 128 ? map(state.lx, 0, 127, -128, -1) : map(state.lx, 128, 255, 0, 127);
 			jdata.ly = state.ly < 128 ? map(state.ly, 0, 127, 127, 0) : map(state.ly, 128, 255, -1, -128);
