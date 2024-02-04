@@ -20,7 +20,7 @@
 
 // Global variables
 bt_hid_state state;
-JoyData jdata = {0, 0, 0, 0, 0, 0, 0, 0};
+JoyData jdata = {0, 0, 0, 0, 0, 0, 0};
 uint8_t sending_bytes[10];
 uint8_t crc_table[CRC8_TABLE_SIZE];
 uint32_t last_sent_tick;
@@ -123,15 +123,14 @@ void main()
  */
 void print_joystick_data()
 {
-	printf("%04x %04x %u %u %d %d %d %d\n",
-		   jdata.button1,
-		   jdata.button2,
-		   jdata.l2,
-		   jdata.r2,
+	printf("%d %d %d %d %u %u %04x\n",
 		   jdata.lx,
 		   jdata.ly,
 		   jdata.rx,
-		   jdata.ry);
+		   jdata.ry,
+		   jdata.lt,
+		   jdata.rt,
+		   jdata.buttons);
 }
 
 /**

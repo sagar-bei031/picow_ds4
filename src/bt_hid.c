@@ -225,8 +225,6 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
 		status = hci_event_disconnection_complete_get_status(packet);
 		reason = hci_event_disconnection_complete_get_reason(packet);
 		printf("Disconnection complete: status: %x, reason: %x\n", status, reason);
-		msg.is_ps4_connected = false;
-		queue_add_blocking(&shared_queue, &msg);
 		break;
 	case HCI_EVENT_MAX_SLOTS_CHANGED:
 		status = hci_event_max_slots_changed_get_lmp_max_slots(packet);
@@ -315,6 +313,8 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
 		case HID_SUBEVENT_CONNECTION_CLOSED:
 			printf("HID connection closed: %s\n", bd_addr_to_str(connected_addr));
 			bt_hid_disconnected(connected_addr);
+			msg.is_ps4_connected = false;
+			queue_add_blocking(&shared_queue, &msg);
 			break;
 		case HID_SUBEVENT_GET_REPORT_RESPONSE:
 		{
