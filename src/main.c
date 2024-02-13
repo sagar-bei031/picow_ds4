@@ -18,6 +18,8 @@
 #include <memory.h>
 #include <stdio.h>
 
+#define BB(x) (1<<x)
+
 // Global variables
 bt_hid_state state;
 JoyData jdata = {0, 0, 0, 0, 0, 0, 0};
@@ -72,22 +74,22 @@ void main()
 
 			// Map Bluetooth HID state to JoystickData structure
 			jdata.buttons = 0;
-			jdata.buttons |= (state.buttons & B_CROSS) ? 1 << Cross : 0;
-			jdata.buttons |= (state.buttons & B_CIRCLE) ? 1 << Circle : 0;
-			jdata.buttons |= (state.buttons & B_SQUARE) ? 1 << Square : 0;
-			jdata.buttons |= (state.buttons & B_TRIANGLE) ? 1 << Triangle : 0;
-			jdata.buttons |= (state.buttons & B_SHARE) ? 1 << Share : 0;
-			jdata.buttons |= (state.buttons & B_PS4) ? 1 << Power : 0;
-			jdata.buttons |= (state.buttons & B_OPTIONS) ? 1 << Option : 0;
-			jdata.buttons |= (state.buttons & B_LEFT_STICK) ? 1 << L3 : 0;
-			jdata.buttons |= (state.buttons & B_RIGHT_STICK) ? 1 << R3 : 0;
-			jdata.buttons |= (state.buttons & B_L1) ? 1 << L1 : 0;
-			jdata.buttons |= (state.buttons & B_R1) ? 1 << R1: 0;
-			jdata.buttons |= H_UP(state.hat) ? 1 << Up : 0;
-			jdata.buttons |= H_DOWN(state.hat) ? 1 << Down : 0;
-			jdata.buttons |= H_LEFT(state.hat) ? 1 << Left : 0;
-			jdata.buttons |= H_RIGHT(state.hat) ? 1 << Right : 0;
-			jdata.buttons |= (state.buttons & B_TOUCH) ? 1 << Touch : 0;
+			if (state.buttons & B_CROSS) jdata.buttons |= BB(Cross);
+			if (state.buttons & B_CIRCLE) jdata.buttons |= BB(Circle);
+			if (state.buttons & B_SQUARE) jdata.buttons |= BB(Square);
+			if (state.buttons & B_TRIANGLE) jdata.buttons |= BB(Triangle);
+			if (state.buttons & B_SHARE) jdata.buttons |= BB(Share);
+			if (state.buttons & B_PS4) jdata.buttons |= BB(Power);
+			if (state.buttons & B_OPTIONS) jdata.buttons |= BB(Option);
+			if (state.buttons & B_LEFT_STICK) jdata.buttons |= BB(L3);
+			if (state.buttons & B_RIGHT_STICK) jdata.buttons |= BB(R3);
+			if (state.buttons & B_L1) jdata.buttons |= BB(L1);
+			if (state.buttons & B_R1) jdata.buttons |= BB(R1);
+			if (H_UP(state.hat)) jdata.buttons |= BB(Up);
+			if (H_DOWN(state.hat)) jdata.buttons |= BB(Down);
+			if (H_LEFT(state.hat)) jdata.buttons |= BB(Left);
+			if (H_RIGHT(state.hat)) jdata.buttons |= BB(Right);
+			if (state.buttons & B_TOUCH) jdata.buttons |= BB(Touch);
 
 			jdata.lt = state.l2;
 			jdata.rt = state.r2;
