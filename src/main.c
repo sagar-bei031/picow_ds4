@@ -72,7 +72,7 @@ void main()
 
 			// Map Bluetooth HID state to JoystickData structure
 			jdata.buttons = 0;
-			jdata.buttons |= (state.buttons & B_CROSS) ? 1 : Cross;
+			jdata.buttons |= (state.buttons & B_CROSS) ? 1 << Cross : 0;
 			jdata.buttons |= (state.buttons & B_CIRCLE) ? 1 << Circle : 0;
 			jdata.buttons |= (state.buttons & B_SQUARE) ? 1 << Square : 0;
 			jdata.buttons |= (state.buttons & B_TRIANGLE) ? 1 << Triangle : 0;
@@ -82,7 +82,7 @@ void main()
 			jdata.buttons |= (state.buttons & B_LEFT_STICK) ? 1 << L3 : 0;
 			jdata.buttons |= (state.buttons & B_RIGHT_STICK) ? 1 << R3 : 0;
 			jdata.buttons |= (state.buttons & B_L1) ? 1 << L1 : 0;
-			jdata.buttons |= (state.buttons & B_R1) ? R1 : 0;
+			jdata.buttons |= (state.buttons & B_R1) ? 1 << R1: 0;
 			jdata.buttons |= H_UP(state.hat) ? 1 << Up : 0;
 			jdata.buttons |= H_DOWN(state.hat) ? 1 << Down : 0;
 			jdata.buttons |= H_LEFT(state.hat) ? 1 << Left : 0;
