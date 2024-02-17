@@ -218,8 +218,6 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
 		status = hci_event_connection_complete_get_status(packet);
 		printf("Connection complete: %x\n", status);
 
-		msg.is_ps4_connected = true;
-		queue_add_blocking(&shared_queue, &msg);
 		break;
 	case HCI_EVENT_DISCONNECTION_COMPLETE:
 		status = hci_event_disconnection_complete_get_status(packet);
@@ -321,6 +319,9 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
 			status = hid_subevent_get_report_response_get_handshake_status(packet);
 			uint16_t dlen = hid_subevent_get_report_response_get_report_len(packet);
 			printf("GET_REPORT response. status: %d, len: %d\n", status, dlen);
+
+			msg.is_ps4_connected = true;
+			queue_add_blocking(&shared_queue, &msg);
 		}
 		break;
 		default:

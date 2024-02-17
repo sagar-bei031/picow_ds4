@@ -26,7 +26,7 @@ JoyData jdata = {0, 0, 0, 0, 0, 0, 0};
 uint8_t sending_bytes[10];
 uint8_t crc_table[CRC8_TABLE_SIZE];
 uint32_t last_sent_tick;
-bool is_ps4_connected = false;
+Message msg;
 
 /**
  * @brief Main function of the application.
@@ -52,6 +52,7 @@ void main()
 
 	// Initialize CRC8 lookup table
 	init_CRC_Table(7, crc_table, sizeof(crc_table));
+	msg.is_ps4_connected = false;
 
 	last_sent_tick = get_tick();
 
@@ -61,13 +62,12 @@ void main()
 		if (current_tick - last_sent_tick < 50)
 			continue;
 
-		Message msg;
 		if (queue_try_remove(&shared_queue, &msg))
 		{
-			is_ps4_connected = msg.is_ps4_connected;
+			printf("Got msg from queue\n");
 		}
 
-		if (is_ps4_connected)
+		if (msg.is_ps4_connected)
 		{
 			// Get the latest Bluetooth HID state
 			bt_hid_get_latest(&state);
