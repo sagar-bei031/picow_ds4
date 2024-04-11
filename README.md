@@ -11,6 +11,14 @@ the PS button, so the light is doing quick double-flashes).
 
 Once paired, it's enough to just press the PS/Home button to reconnect.
 
+## PICO SDK Install
+Run the `pico_setup.sh` cloning from https://github.com/raspberrypi/pico-setup.git.
+```bash
+git clone https://github.com/raspberrypi/pico-setup.git
+cd pico-setup
+export SKIP_VSCODE=1 && bash pico_setup.sh
+```
+
 ## Building
 
 The DS4 has a large HID descriptor, which doesn't fit in upstream BTStack's
@@ -19,16 +27,28 @@ larger.
 
 So, clone this repository, then:
 
-```
+```bash
 cd picow_ds4
 git submodule update --init --recursive
 mkdir build
 cd build
-cmake -DPICO_BOARD=pico_w -DPICO_SDK_PATH=/your/path/to/pico-sdk ../
-make
+cmake .. # you might use `-DPICO_BOARD=pico_w -DPICO_SDK_PATH=/your/path/to/pico-sdk` if environment is not set
+make -j <no. of parallel threads>
 ```
 
 The `.uf2` file will be `build/src/picow_ds4.uf2`
+
+
+# Upload and Play
+
+Hold the `boot button` and connect the `Pico W` to `PC` using `USB`.
+Drag and drop the `picow_ds4.uf2` file from `build/src` to `Pico W Mass Storage`. You also can use similar command.
+```bash
+cp src/picow_ds4.uf2 /media/pi/PICOW # Just hit `tab` `tab` after `/media`.
+```
+
+Long press `share` and `PS4 button` simultaneous untill `fast blink of PS4 LED`. It will connect to `Pico W`. Pico W blinks its `green LED` if no controller is connected and `solid green` if it detects and connects to a controller.
+
 
 # Known Issues
 
